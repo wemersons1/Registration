@@ -1,0 +1,137 @@
+.Input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.Input input {
+    padding: .7rem;
+    font-size: 1.4rem;
+    border: 1px solid grey;
+    border-radius: .4rem;
+    text-align: left;
+    text-indent: 8px;
+    width: 100%;
+}
+
+.Password{
+    display: flex;
+}
+
+.Password > div:last-child {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 1px;
+}
+
+.Password input {
+    border-right: none;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    text-indent: 25px;
+
+}
+
+.Password input::placeholder {
+    text-indent: 25px;
+}
+
+.Password button {
+    background-color: white;
+    border-left: none;
+    border-radius: 0 .4rem .4rem 0;
+    padding: .2rem;
+    outline: none;
+}
+
+.checkBox {
+    margin: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.margin-0 {
+    margin-left: 0!important;
+}
+
+.checkBox label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: .5rem;
+}
+
+.Radio {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem;
+}
+
+.Radio label{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+.Input input::placeholder {
+    color: lightgrey;
+}
+
+.Input label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+.Input input:focus {
+    outline: none;
+    box-shadow: 0 0 .5em rgba(0,0,0,.3);
+}
+
+.InputFile {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5rem;
+    width: 70%;
+}
+
+.Principal {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem;
+}
+
+.InputFile label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+.InputFile input {
+    padding: .3rem;
+    display: inline-block;
+    border: none;
+    border-radius: .4rem;
+}
+
+.InputFile input::placeholder {
+    font-size: 1.3rem;
+}
+
+.LabelFile {
+    background-color: black;
+    padding: .7rem;
+    border-radius: .4rem;
+    margin-top: 3rem;
+    margin-left: .5rem;
+    font-size: 1.3rem;
+}
+
+.LabelFile:hover {
+    cursor: pointer;
+    filter: brightness(70%);
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}

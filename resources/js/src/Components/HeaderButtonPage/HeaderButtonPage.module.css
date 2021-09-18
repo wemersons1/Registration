@@ -1,0 +1,26 @@
+.HeaderButtonPage {
+    margin: 2rem;
+}
+
+.Icon {
+    fill: white;
+    font-size: 2.5rem;
+}
+
+.Back {
+    width: 70px;
+    padding: 1.7rem!important;
+    font-size: 2rem;
+    border-radius: 50% !important;
+    background-color: var(--color-primary);
+    margin: 1rem auto;
+}
+
+
+@media (max-width: 768px) {
+    .Centralize {
+        display: flex;
+        justify-content: center;
+    }
+}
+

@@ -1,0 +1,83 @@
+.icon-grey {
+    font-size: 2rem;
+    fill: grey;
+    color: grey;
+}
+
+.icon-red {
+    font-size: 2rem;
+    fill: red;
+}
+
+.icon-success {
+    font-size: 2rem;
+    fill: var(--color-primary);
+}
+
+.icon-danger {
+    font-size: 2rem;
+    fill: var(--color-danger);
+}
+
+.danger {
+    color: var(--color-danger);
+}
+
+.icon-left {
+    margin-right: 1rem;
+    font-size: 2rem;
+}
+
+.icon-white {
+    fill: white;
+    color: white;
+}
+
+.icon-warning {
+    fill: var(--color-yellow);
+    color: var(--color-yellow);
+}
+
+.icon {
+    background-color: transparent;
+    font-size: 2rem;
+    margin: 0 1rem;
+}
+.icon-right {
+    margin-left: 1rem;
+    font-size: 2rem;
+    fill: white;
+}
+
+.ProgressBar {
+    font-size: 1.5rem;
+    height: 2rem;
+}
+
+.color-money {
+    color: var(--color-primary)!important;
+}
+
+.message-danger {
+    color: var(--color-danger);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.error {
+    color: var(--color-danger);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.success {
+    color: var(--color-primary);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.warning {
+    color: var(--color-yellow);
+    font-weight: bold;
+    text-transform: uppercase;
+}

@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('path_image');
+            $table->double('amount', 8, 2);
 
             $table->timestamps();
         });

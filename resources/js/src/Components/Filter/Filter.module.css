@@ -1,0 +1,37 @@
+.Filter {
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: var(--color-secondary);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+    gap: 1.5rem;
+    margin-bottom: .5rem;
+    position: relative;
+}
+
+.Filter label {
+    color: white;
+}
+
+.colorFilter{
+    fill: var(--color-blue);
+}
+
+.Filter > span {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: var(--color-primary);
+    letter-spacing: .1rem;
+}
+
+.Filter > span:hover {
+    cursor: default;
+}
