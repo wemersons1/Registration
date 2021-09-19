@@ -10,7 +10,7 @@ O projeto foi desenvolvido usando as seguintes tecnologias
 - APACHE
 - MySQL
 - COMPOSER
-- Node.js
+- Node.js >= 14
 
 ## Como executar a aplicação
 
