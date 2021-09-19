@@ -1,3 +1,4 @@
+<h1>W-Register</h1>
 ## Tecnologias utilizadas:
 O projeto foi desenvolvido usando as seguintes tecnologias
 - Javascript/React
