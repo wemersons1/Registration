@@ -92,7 +92,7 @@ class CategoriesController extends Controller
         $categories = new Category();
 
         if($request->name) {
-            $categories->where('name', 'LIKE', '%'.$request->name.'%');
+            $categories = $categories->where('name', 'LIKE', '%'.$request->name.'%');
         }
 
         if($request->all) {

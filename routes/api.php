@@ -22,10 +22,10 @@ Route::middleware('auth:sanctum')->group(function() {
 
         Route::prefix('products')->group(function() {
             Route::post('/', [ProductsController::class, 'store']);
-            Route::put('/{id}', [CategoriesController::class, 'update']);
-            Route::get('/{id}', [CategoriesController::class, 'show']);
-            Route::get('/', [CategoriesController::class, 'index']);
-            Route::delete('/{id}', [CategoriesController::class, 'destroy']);
+            Route::put('/{id}', [ProductsController::class, 'update']);
+            Route::get('/{id}', [ProductsController::class, 'show']);
+            Route::get('/', [ProductsController::class, 'index']);
+            Route::delete('/{id}', [ProductsController::class, 'destroy']);
         });
     });
 

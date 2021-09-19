@@ -13,8 +13,10 @@ class ProductsController extends Controller
         $validator = Validator::make($request->all(), [
             'category_id' => 'required|numeric|exists:categories,id',
             'name' => 'required|string',
-            'description' => 'required|string',
-            'image' => 'required'
+            'description' => 'nullable|string',
+            'image' => 'required',
+            'amount' => 'required|numeric|min:0',
+            'quantity' => 'required|numeric|min:0'
         ]);
 
         if ($validator->fails()) {
@@ -38,7 +40,9 @@ class ProductsController extends Controller
             "name" => $request->name,
             "description" => $request->description,
             "path_image" => $pathImage,
-            "name_image" => $request->image->getClientOriginalName()
+            "name_image" => $request->image->getClientOriginalName(),
+            "amount" => $request->amount,
+            "quantity" => $request->quantity
         ]);
 
         return response()->json($product);
@@ -46,9 +50,12 @@ class ProductsController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
+            'category_id' => 'required|numeric|exists:categories,id',
             'name' => 'required|string',
-            'description' => 'required|string',
-            'image' => 'required'
+            'description' => 'nullable|string',
+            'image' => 'nullable',
+            'amount' => 'required|numeric|min:0',
+            'quantity' => 'required|numeric|min:0'
         ]);
 
         if ($validator->fails()) {
@@ -59,7 +66,7 @@ class ProductsController extends Controller
             ], 400);
         }
 
-        if(!$request->file('image')->isValid()) {
+        if($request->image && !$request->file('image')->isValid()) {
             return response()->json([
                 "message" => "Imagem inválida"
             ], 400);
@@ -69,19 +76,20 @@ class ProductsController extends Controller
 
         if(!$product) {
             return response()->json([
-                "message" => "Produto não encontrada"
+                "message" => "Produto não encontrado"
             ], 400);
         }
 
-        $pathImage = $request->image->store('products');
+        $productRequest = $request->all();
 
-        Storage::delete($product->path_image);
+        if($request->image) {
+            Storage::delete($product->path_image);
+            $pathImage = $request->image->store('products');
+            $productRequest['path_image'] = $pathImage;
+            $productRequest['name_image'] = $request->image->getClientOriginalName();
+        }
 
-        $product->update([
-            "name" => $request->name,
-            "description" => $request->description,
-            "path_image" => $pathImage
-        ]);
+        $product->update($productRequest);
 
         return response()->json($product);
     }
@@ -91,7 +99,11 @@ class ProductsController extends Controller
         $products = new Product();
 
         if($request->name) {
-            $products->where('name', 'LIKE', '%'.$request->name.'%');
+            $products = $products->where('name', 'LIKE', '%'.$request->name.'%');
+        }
+
+        if($request->category_id) {
+            $products = $products->where('category_id', $request->category_id);
         }
 
         if($request->all) {

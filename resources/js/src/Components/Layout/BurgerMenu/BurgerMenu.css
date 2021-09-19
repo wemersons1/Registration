@@ -57,12 +57,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .bm-menu div  a {
     text-decoration: none;
-    color: var(--color-primary);
     margin: .5rem 0;
 }
 
 .link-active {
-    color: var(--color-secondary)!important;
+    color: var(--color-primary)!important;
     font-weight: bold;
 }
 

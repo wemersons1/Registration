@@ -27,26 +27,4 @@ class Category extends Model
         }
         return "data:;base64,".base64_encode($data);
     }
-
-    public function saveFiles($file, $type, $idRepresentative){
-
-        $base64 = $file['base64'];
-
-        $extension = explode('/', $base64);
-        $extension = explode(';', $extension[1]);
-        $extension = '.' . $extension[0];
-
-        $name = time() . $extension;
-        //obtem o arquivo
-        $separatorFile = explode(',', $base64);
-        $fileSave = $separatorFile[1];
-        $path = 'files/'.$type.'/'.$idRepresentative.'/'.$name;
-
-        //envia o arquivo
-        Storage::disk('s3')->put($path, base64_decode($fileSave));
-
-        return $path;
-    }
-
-
 }

@@ -6,19 +6,26 @@ import Card from "../../Components/Card";
 import Message from "../../Components/Message";
 import {Link} from 'react-router-dom';
 import Container from '../../Components/Container';
+import Filter from "../../Components/Filter";
+import {Col, Row} from "react-bootstrap";
+import Input from "../../Components/Input";
 
 const Categories = () => {
 
     const [categories, setCategories] = useState([]);
+    const [name, setName] = useState('');
 
     const [loading, setLoading] = useState(true);
     const {token} = useContext(Context);
 
     useEffect(() => {
+        let params = {};
+        name.length ? params['name'] = name : null;
+
         axios.get('/api/v1/categories', {
             headers: {
                 Authorization: `Bearer ${token}`
-            }
+            }, params
         }).then(response => {
 
             setCategories(response.data.data.map(category => {
@@ -33,7 +40,7 @@ const Categories = () => {
         }).finally(() => {
             setLoading(false);
         });
-    }, []);
+    }, [name]);
 
     const renderCategories = () => {
 
@@ -62,6 +69,18 @@ const Categories = () => {
                 type={'store'}
                 title={'Cadastrar'}
             />
+            <Filter>
+                <Row>
+                    <Col lg={6}>
+                        <Input
+                            type={'text'}
+                            label={'Nome'}
+                            onChange={e => setName(e.target.value)}
+                            value={name}
+                        />
+                    </Col>
+                </Row>
+            </Filter>
             {
                 categories.length ?
                     <Container>

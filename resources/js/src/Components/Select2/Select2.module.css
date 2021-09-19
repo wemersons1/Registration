@@ -1,0 +1,49 @@
+.Select2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.SelectNormal {
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.SelectNormal > div >div:nth-child(2) {
+    height: 40px!important;
+    padding: 0;
+}
+
+.SelectNormal label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: .35rem;
+}
+
+.Select2 label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: .35rem;
+    text-transform: uppercase;
+}
+
+.normal {
+    text-transform: none!important;
+}
+
+@media(max-width: 768px) {
+    .Select2 label {
+        font-size: 1.2rem;
+    }
+    .Select2 {
+        margin-top: 1.3rem;
+    }
+
+    .SelectNormal {
+        margin-top: 1.3rem;
+    }
+
+    .SelectNormal label {
+        font-size: 1.2rem;
+    }
+}

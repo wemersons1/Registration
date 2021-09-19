@@ -13,9 +13,10 @@ const TextArea = (props) => {
                 placeholder={props.placeholder}
                 onChange={props.onChange}
                 id={props.id}
+                value={props.value}
                 disabled={props.disabled}
                 required={props.required}
-            >{props.value || props.children}</textarea>
+            >{props.value}</textarea>
         </div>
 
     );
