@@ -34,6 +34,9 @@ O projeto foi desenvolvido usando as seguintes tecnologias
 - 
 Agora sua aplicação estará acessível no endereço 'http://localhost:8080'
 
-Link para a aplicação: http://wapp-register.herokuapp.com/
-Email: admin@teste.com
-Senha: 123456
+<h3>Link da aplicação: http://wapp-register.herokuapp.com/</h3>
+<ul>
+    <li>Email: admin@teste.com</li>
+    <li>Senha: 123456</li>
+</ul>
+
