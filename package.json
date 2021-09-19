@@ -37,6 +37,7 @@
         "react-table": "^7.7.0"
     },
     "engines": {
-        "node": "14.x"
+        "node": "14.x",
+        "npm": "7.x"
     }
 }
