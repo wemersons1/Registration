@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -12,7 +13,7 @@ class CategoriesController extends Controller
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
-            'description' => 'required|string',
+            'description' => 'nullable|string',
             'image' => 'required'
         ]);
 
@@ -35,17 +36,19 @@ class CategoriesController extends Controller
         $category = Category::create([
             "name" => $request->name,
             "description" => $request->description,
-            "path_image" => $pathImage
+            "path_image" => $pathImage,
+            "name_image" => $request->image->getClientOriginalName()
         ]);
 
         return response()->json($category);
     }
 
     public function update(Request $request, $id) {
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'description' => 'required|string',
-            'image' => 'required'
+            'image' => 'nullable'
         ]);
 
         if ($validator->fails()) {
@@ -56,7 +59,7 @@ class CategoriesController extends Controller
             ], 400);
         }
 
-        if(!$request->file('image')->isValid()) {
+        if($request->image && !$request->file('image')->isValid()) {
             return response()->json([
                 "message" => "Imagem inválida"
             ], 400);
@@ -70,15 +73,16 @@ class CategoriesController extends Controller
             ], 400);
         }
 
-        $pathImage = $request->image->store('categories');
+        $categoryRequest = $request->all();
 
-        Storage::delete($category->path_image);
+        if($request->image) {
+            Storage::delete($category->path_image);
+            $pathImage = $request->image->store('categories');
+            $categoryRequest['path_image'] = $pathImage;
+            $categoryRequest['name_image'] = $request->image->getClientOriginalName();
+        }
 
-        $category->update([
-            "name" => $request->name,
-            "description" => $request->description,
-            "path_image" => $pathImage
-        ]);
+        $category->update($categoryRequest);
 
         return response()->json($category);
     }
@@ -108,7 +112,16 @@ class CategoriesController extends Controller
             ], 400);
         }
 
-        $category->delete();
+        try {
+            Storage::delete($category->path_image);
+
+            $category->delete();
+        } catch (\Exception $e) {
+
+            return response()->json([
+                "message" => $e->getMessage()
+            ], 400);
+        }
 
         return response()->json([
             "message" => "Categoria excluída com sucesso"

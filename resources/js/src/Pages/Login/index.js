@@ -25,7 +25,7 @@ const Login = () => {
 
             await signIn(email, password);
             setError(false);
-            history.push('/admin');
+            history.push('/');
 
         }catch (e) {
 

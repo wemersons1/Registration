@@ -1,21 +1,18 @@
 import React from 'react';
 import styles from './Card.module.css';
 
-const Card = ({title, children, style, icon}) => {
+const Card = ({title, img, description}) => {
 
     return (
-        <div className={`${styles[style]} ${styles.Card}`}>
-            <div className={styles.Info}>
-                <h6>{title}</h6>
-                <p>{children}</p>
+        <div className={styles.Card}>
+            <div className={styles.Img}>
+                <img
+                    alt={title}
+                    src={img}
+                />
             </div>
-            {
-                icon &&
-                <div className={styles.Icon}>
-                    {icon}
-                </div>
-            }
-
+            <h4>{title}</h4>
+            <p>{description}</p>
         </div>
     );
 }

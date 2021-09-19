@@ -26,6 +26,8 @@
     },
     "dependencies": {
         "react-bootstrap": "^1.6.3",
+        "react-bootstrap-sweetalert": "^5.2.0",
+        "react-burger-menu": "^3.0.6",
         "react-icons": "^4.2.0",
         "react-input-mask": "^2.0.4",
         "react-intl-currency-input": "^0.2.6",

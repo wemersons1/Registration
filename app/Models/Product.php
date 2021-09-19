@@ -13,6 +13,7 @@ class Product extends Model
         'category_id',
         'name',
         'description',
-        'path_image'
+        'path_image',
+        'name_image'
     ];
 }

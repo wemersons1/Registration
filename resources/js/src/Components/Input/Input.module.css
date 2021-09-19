@@ -7,7 +7,7 @@
 .Input input {
     padding: .7rem;
     font-size: 1.4rem;
-    border: 1px solid grey;
+    border: 1px solid lightgrey;
     border-radius: .4rem;
     text-align: left;
     text-indent: 8px;
@@ -118,12 +118,13 @@
 }
 
 .LabelFile {
-    background-color: black;
+    background-color: var(--color-primary);
     padding: .7rem;
     border-radius: .4rem;
     margin-top: 3rem;
     margin-left: .5rem;
     font-size: 1.3rem;
+    font-weight: bold;
 }
 
 .LabelFile:hover {

@@ -1,5 +1,7 @@
 /public/css/*.css
 /public/js/*.js
+/public/js/app.js
+/public/css/app.css
 /public/images/*
 /node_modules
 /public/hot

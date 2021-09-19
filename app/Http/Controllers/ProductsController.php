@@ -37,7 +37,8 @@ class ProductsController extends Controller
             "category_id" => $request->category_id,
             "name" => $request->name,
             "description" => $request->description,
-            "path_image" => $pathImage
+            "path_image" => $pathImage,
+            "name_image" => $request->image->getClientOriginalName()
         ]);
 
         return response()->json($product);

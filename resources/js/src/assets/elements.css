@@ -75,6 +75,10 @@ button:hover {
     transition: all 0.4s ease-out;
 }
 
+textarea:focus {
+    outline: none;
+}
+
 input[type=radio] {
     margin: 1rem;
 }

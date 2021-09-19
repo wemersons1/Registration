@@ -3,11 +3,23 @@ import InputMask from "react-input-mask";
 import styles from './Input.module.css';
 import {Col, Row} from 'react-bootstrap';
 import IntlCurrencyInput from "react-intl-currency-input"
-import {BsEye, BsEyeSlash} from 'react-icons/bs';
+import Message from '../../Components/Message';
 
 const Input = (props) => {
 
-    const [icon, setIcon] = useState(<BsEye/>);
+    const [fileMessageError, setFileMessageError] = useState(false);
+
+    const verifyImages = e => {
+        const file = e.target.files[0];
+        const extension = file.name.split('.')[file.name.split('.').length -1];
+
+        if(extension !== 'png' && extension !== 'jpg' && extension !== 'jpeg' ) {
+            setFileMessageError(true);
+        } else {
+            setFileMessageError(false);
+            props.onChange(e);
+        }
+    }
 
     const currencyConfig = {
         locale: "pt-BR",
@@ -23,7 +35,43 @@ const Input = (props) => {
         },
     };
 
-     if(props.type === 'money') {
+     if(props.type === 'file') {
+        return (
+            <div className={styles.Principal}>
+                <div className={styles.flex}>
+                    <div className={styles.InputFile}>
+                        <label htmlFor={'upload'}>{props.label}</label>
+
+                        <input
+                            name={props.name}
+                            disabled
+                            value={props.textInput}
+                            placeholder={'Selecione uma imagem'}
+                        />
+                    </div>
+                    <div>
+                        <label
+                            htmlFor={props.id}
+                            className={styles.LabelFile}>
+                            Selecione
+                        </label>
+                        <input
+                            name={props.name}
+                            style={{display: "none"}}
+                            id={props.id}
+                            type={'file'}
+                            onChange={verifyImages}
+                        />
+                    </div>
+                </div>
+
+                {fileMessageError ? <Message type={'error'}>Formato suportado: .png, .jpg, .jpeg</Message> : null}
+            </div>
+
+        );
+     }
+
+     else if(props.type === 'money') {
         return (
 
             <div className={styles.Input}>
