@@ -247,13 +247,19 @@ const Create = () => {
                         <Col>
                             <Button><BiSave style={{fill: "white", marginRight: ".5rem"}}/>{send ? <Spinner size={'small'} /> : null}{id ? 'Salvar alterações' : 'Cadastrar'}</Button>
                         </Col>
-                        <Col>
-                            <Button
-                                onClick={deleteProduct}
-                                type={'button'}
-                                style={'danger'}
-                            >Excluir</Button>
-                        </Col>
+                        {
+                            id ?
+                                <Col>
+                                    <Col>
+                                        <Button
+                                            onClick={deleteProduct}
+                                            type={'button'}
+                                            style={'danger'}
+                                        >Excluir</Button>
+                                    </Col>
+                                </Col> : null
+                        }
+
                     </Row>
                 </Box>
             </form>
